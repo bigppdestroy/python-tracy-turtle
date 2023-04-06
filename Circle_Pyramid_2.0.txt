@@ -1,0 +1,47 @@
+radius = 25
+
+row_value = 6
+penup()
+setposition(-175,-200)
+
+def rowcreate(howmuchcircle):
+    pendown()
+    for i in range(howmuchcircle):
+        circle(radius)
+        penup()
+        forward(radius*2)
+        pendown()
+def moverow():
+    global radius
+    global user_number
+    user_number = user_number - 1
+    penup()
+    move3 = radius * 2
+    move4 = move3 * user_number
+    backward(move4 + 50)
+    forward(25)
+    left(90)
+    forward(40)
+    right(90)
+    print("hi")
+user_number = 0
+def answerchoice():
+    global user_number
+    try:
+        user_number = int(input("how many circles would you like (max circles is 8)" ))
+        if user_number > 8:
+            
+            
+            print("hi")
+            answerchoice()
+        
+  
+    except:
+        print("please put a number thats 1-10!")
+        answerchoice()
+answerchoice()
+while True:
+    rowcreate(user_number)
+    moverow()
+    if user_number == 0:
+        break
