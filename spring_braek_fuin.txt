@@ -1,0 +1,143 @@
+import random
+import time
+speed(100)
+
+""" goal of this is to make the background first, then the whole point of this is to give a list of items that tracy can draw on the background
+ovr nad over again so its a work in progress still."""
+
+
+
+
+sandrand = (40,50,35,45)
+def backgroundcreate():
+    global sandrand
+    print("Tracy is drawing a beach themed background please wait...")
+   
+    penup()
+    color('light blue')
+    setposition(-200,-200)
+    begin_fill()
+    pendown()
+    for i in range(4):
+        forward(400)
+        left(90)
+    end_fill()
+    setposition(-200,-230)
+    
+    for d in range(12):
+        color('gold')
+        rando = random.randint(0,3)
+        begin_fill()
+        circle(sandrand[rando])
+        end_fill()
+       #color('black')
+       #circle(sandrand[rando])
+        forward(sandrand[rando] * 1.2)
+    
+    penup()
+    xneg = -250
+    xpos = -200
+    ypos = 150
+    yneg = 100
+    for k in range(7):
+       
+        cloudrand = (20,25,35,40)
+        color('white')
+        rando = random.randint(0,3)
+      
+       
+        pendown()
+        begin_fill()
+        circle(cloudrand[rando])
+        end_fill()
+        penup()
+        forward(cloudrand[rando])
+        pendown()
+        begin_fill()
+        circle(cloudrand[rando] / 1.5)
+        end_fill()
+        penup()
+        backward(cloudrand[rando] * 2)
+        pendown()
+        begin_fill()
+        circle(cloudrand[rando] / 1.5)
+        end_fill()
+        numberlist = []
+        for che in range(-50,110, 10):
+            numberlist.append(che)
+        chose22 = random.randint(0,15)
+       
+        penup()
+        xpos = xpos + 70
+        xneg = xneg + 70
+        ypos = ypos - numberlist[chose22]
+        yneg = yneg - numberlist[chose22]
+        xrand = random.randint(xneg, xpos)
+        yrand = random.randint(yneg, ypos)
+        if ypos > 200:
+            ypos = 110
+            yneg = 100
+        elif yneg > ypos:
+            ypos = 110
+            yneg = 100
+        elif yneg < -100:
+            ypos = random.randint(0,100)
+            yneg = ypos / 2
+      
+      
+        print("...")
+        print(yneg)
+        print(ypos)
+          
+        
+        setposition(xrand,yrand)
+
+
+  
+  
+backgroundcreate()
+activitychoice = ""
+choicelist69 = (("!help",  "- this allows you to see what commands you can do !"), ("!eyeball", "- draws an eyeball in the middle of the screen!"))
+def helpcom():
+    global choicelist69
+    print("Hey! here are the activities you can do!")
+    for de in choicelist69:
+        print(de)
+def eyeballcom():
+    setposition(0,0)
+    
+    
+    
+    
+    userinp = 50
+    coulrlist = ['white','red','black']
+    for col in coulrlist:
+        right(90)
+        backward(userinp)
+        begin_fill()
+        pendown()
+        color(col)
+        circle(userinp)
+        left(90)
+        setposition(0,0)
+        end_fill()
+        userinp = userinp / 2
+        
+        
+    
+def answerchoose(chosedme):
+    answerlist3 = {"!help" : helpcom , "!eyeball" : eyeballcom}
+    if chosedme not in answerlist3:
+        print("Invalid command!")
+        testbro()
+    else:
+        answerlist3.get(chosedme)()
+        testbro()
+    
+    
+def testbro():
+    global activitychoice
+    print("Okay tracy is done loading the background!, so what do you want to do? type in '!help' for actions you can do!")
+    activitychoice = input(" ")
+    answerchoose(activitychoice)
+testbro()
