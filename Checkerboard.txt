@@ -1,0 +1,29 @@
+penup()
+speed(10)
+setposition(-200,-200)
+def squareblock(color_value):
+    pendown()
+    begin_fill()
+    color(color_value)
+    for i in range(4):
+        forward(40)
+        left(90)
+    end_fill()
+    penup()
+    forward(40)
+def rowchange(rowvalx,rowvaly):
+    setposition(-200 - rowvalx,-200 + rowvaly)
+ 
+rowvalplus = 0
+rowvalminus = 0
+rangecor = 5
+while True:
+    for i in range(rangecor):
+        squareblock('red')
+        squareblock('black')
+    rowvalplus = rowvalplus + 40
+    rowvalminus = rowvalminus + 40
+    rangecor = rangecor + 1
+    rowchange(rowvalminus,rowvalplus)
+    if rangecor == 15:
+        break
