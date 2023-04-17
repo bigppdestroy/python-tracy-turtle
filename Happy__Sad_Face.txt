@@ -1,0 +1,63 @@
+def smileyfacecreate(angle,xpos,ypos):
+    penup()
+    setposition(0,-100)
+    pendown()
+    begin_fill()
+    color('yellow')
+    circle(100)
+    end_fill()
+    penup()
+    color('black')
+    left(90)
+    forward(160)
+    left(90)
+    forward(40)
+    begin_fill()
+    circle(25)
+    end_fill()
+    penup()
+    backward(80)
+    pendown()
+    begin_fill()
+    circle(25)
+    end_fill()
+    penup()
+    right(angle)
+    setposition(xpos,ypos)
+    pendown()
+    pensize(10)
+    circle(50,180)
+happylist = ("yes","no")
+
+happy = input("Are you happy? 'yes' or 'no'")
+if happy not in happylist:
+    print("Please type 'yes' or 'no' !")
+    happy = input("Are you happy? 'yes' or 'no'")
+if  happy == "yes":
+    smileyfacecreate(270,-50,-30)
+    print("Hooray!")
+   
+if  happy == "no":
+    smileyfacecreate(90,50,-70)
+    print("Feel better!")
+else:
+    print("hi")
+
+    
+
+"""
+had to make the one up tehre because it wouldnt let me submit this one
+while 1==1:
+    happy = input("Are you happy? 'yes' or 'no'").lower()
+    if happy not in happylist:
+        print("Please type 'yes' or 'no' !")
+        happy = input("Are you happy? 'yes' or 'no'").lower()
+    elif happy == "yes":
+        smileyfacecreate(270,-50,-30)
+        print("Hooray!")
+        break
+    elif happy == "no":
+        smileyfacecreate(90,50,-70)
+        print("Feel better!")
+        break
+"""
