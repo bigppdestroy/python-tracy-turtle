@@ -1,0 +1,16 @@
+length = input("What is the length? ")
+
+width = input("What is the length? ")
+
+
+
+def areacalc(length, width):
+    Area = length * width
+    return(Area)
+def perimetercalc(length, width):
+    Perimeter = 2 * (length + width)
+    return(Perimeter)
+AreaF = areacalc(length,width)
+PerimeterF = perimetercalc(length, width)
+print(f"Area = {AreaF}")
+print(f"Perimeter = {PerimeterF}")
