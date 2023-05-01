@@ -1,0 +1,72 @@
+# This program simulates a single transaction -
+# either a deposit or a withdrawal - at a bank.
+Balance = 1000
+commandlist = (("!deposit","!dep","!depo"), ("withdrawal","!wd","!withdraw"))
+
+def answerstart():
+    command = input("Hello welcome to Zaddy Bank, what would you like to do? ")
+    if command in commandlist[0] or commandlist[1]:
+        if command in commandlist[0]:
+            command = "deposit"
+            function_starter(command)
+ 
+            
+        if command in commandlist[1]:
+            command = "withdrawal"
+            function_starter(command)
+ 
+       
+        
+    else:
+        print("Invalid command!")
+        answerstart()
+def depcom():
+    global Balance 
+    try:
+        amount = int(input("Hello how much would you like to deposit today? "))
+        if amount > Balance:
+            print("You cannot have a negative balance!")
+            deposit()
+        elif amount < 0:
+            print("Invalid!")
+            deposit()
+        else:
+            Balance = Balance + amount
+            print(Balance)
+        
+    except:
+        print("invalid!")
+        deposit()
+        
+    
+def withdrawcom():
+    global Balance 
+    try:
+        amount = int(input("Hello how much would you like to withdraw today? "))
+        if amount > Balance:
+            print("You cannot have a negative balance!")
+            deposit()
+        elif amount < 0:
+            print("Invalid!")
+            deposit()
+        else:
+            Balance = Balance - amount
+            print(Balance)
+        
+    except:
+        print("invalid!")
+        withdrawcom()
+    
+    
+def function_starter(command_choice):
+    answerlist3 = {"deposit" : depcom, "withdrawal" : withdrawcom}
+    if command_choice not in answerlist3:
+        print("Invalid command!")
+        answerstart()
+    else:
+        answerlist3.get(command_choice)()
+        answerstart()
+
+
+
+answerstart()
