@@ -1,0 +1,12 @@
+howmanyname = int(input("How many names does your full name have? "))
+namevar = 0
+namelist = []
+nameorder2 = ("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th")
+for i in range(howmanyname):
+    nameorder = nameorder2[namevar]
+    nameask = input(f"What is your {nameorder} name? ")
+    namelist.append(nameask)
+    namevar = namevar + 1
+print("Your full name is...")
+print("Hello,")
+print(str(namelist).replace("[","").replace("]","").replace(",","").replace("'",""))
