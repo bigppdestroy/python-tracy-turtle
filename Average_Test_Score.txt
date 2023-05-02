@@ -1,0 +1,12 @@
+testscoretotal = []
+testvar = 0
+
+for i in range(3):
+    testvar = testvar + 1
+    testscore = int(input(f"What did you get on your {testvar} test? "))
+    testscoretotal.append(testscore)
+print(testscoretotal)
+print(testscoretotal[0])
+testscorecalc = testscoretotal[0]  + testscoretotal[1] + testscoretotal[2]
+testscorecalc2 = testscorecalc / 3
+print(f"You got an average of {round(testscorecalc2, 2)}% on those 3 tests!")
