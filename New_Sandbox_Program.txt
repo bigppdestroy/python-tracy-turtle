@@ -1,0 +1,89 @@
+import time
+print("You are entering the lunchroom...")
+time.sleep(1)
+print("...")
+time.sleep(1)
+sandwhich_list = (("Chicken","chicken",5.25), ("Beef","beef",6.25), ("Tofu","tofu",5.75))
+drink_list = (("Small","small",1.00),("Medium","medium",1.75),("Large","large",2.25))
+fries_list = (("Small","small",1.00),("Medium","medium",1.50),("Large","large",2.00))
+
+ask_list = ("Hey! what kind of sandwhich would you like?", "Would you like a bev?", "Would you like fries?","")
+ask_var = 0
+overallitem_list = (sandwhich_list, drink_list, fries_list,"")
+current_list = overallitem_list[ask_var]
+current_item = ("Sandwhich", "Bev", "Fries","")
+buy_list = ("Put sandwhich option here (all lowerclase plz):", "Put bev choice here, if you dont want a bev, then put 'no':","Put fries choice here, if you dont want fries, then put 'no':")
+total_cost = 0 
+all_list = ("chicken","beef","tofu","small","medium","large")
+
+identify = 0
+while ask_var <=2:
+
+    time.sleep(1)
+    print("Choices:")
+    print("----------------------------")
+    sandwhich_range = 0
+    for i in sandwhich_list:
+        print(f"{current_list[sandwhich_range][0]} - ${current_list[sandwhich_range][2]}")
+        sandwhich_range = sandwhich_range + 1
+    print("----------------------------")
+    user_sandwhich_choice = input(f"{buy_list[ask_var]} ")
+    sandwhich_range = 0
+    
+    if user_sandwhich_choice in all_list:#current_list[0][1]:# or current_list[1][1] or current_list[2][1]:
+        for i in current_list:
+      
+            if user_sandwhich_choice == current_list[sandwhich_range][1]:
+                print(f"You have chosen... {current_list[sandwhich_range][0]} {current_item[ask_var]}!")
+                total_cost = total_cost + current_list[sandwhich_range][2]
+              
+            sandwhich_range = sandwhich_range + 1
+               
+        if user_sandwhich_choice == all_list[3]:
+                
+            if ask_var == 2:
+                time.sleep(1)
+                mega_size = input("Would you like to mega-size your fries?(yes or no): ")
+                if mega_size == "yes":
+                    print(f"You have chosen... Mega-size fries!")
+                    total_cost = total_cost + current_list[0][2]
+        identify += 1
+    
+           
+                    
+                        
+                        
+
+    
+    #if user_sandwhich_choice == current_list[0][1] or current_list[1][1] or current_list[2][1]:
+        #dog = 3 #had to add this and above to make it work sorry
+
+    elif user_sandwhich_choice == "no":
+   
+        if ask_var == 1:
+            print("okay no bev!")
+        elif ask_var == 2:
+            print("Okay no fries!")
+        else:
+            print("Leave!")
+    else:
+        print("Leave")
+    time.sleep(1)
+    ask_var += 1
+    current_list = overallitem_list[ask_var]
+    sandwhich_range = 0
+try:
+    ask_ketchup = int(input("Would you like ketchup packets? $0.25 per packet (type out how many you want if yes, otherwise put no: "))
+    ask_ketchup = ask_ketchup * 0.25
+    total_cost = total_cost + ask_ketchup
+    print(f"You have added {ask_ketchup / .25} ketchup packets! for a total of ${ask_ketchup}!")
+except ValueError:
+    print("Okay")
+if identify == 3:
+    total_cost = total_cost - 1
+    print("...")
+    time.sleep(1)
+    print("You have got a discount for $1 for having a sandwhich,bev, and fries!")
+    time.sleep(1)
+
+print(f"Total cost: {total_cost}")
